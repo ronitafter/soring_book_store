@@ -1,0 +1,157 @@
+_________________ ORM(OBJECTCTt–RELATIONAL MAPPING) _________________
+ORM is a technique for storing, retrieving, updating and deleting 
+from an object-oriented program in a relational database
+
+*********** HIBERNATE ************
+Hibernate is an ORM(object–relational mapping) tool for Java. 
+It provides a framework for mapping an object-oriented domain model to
+a relational database. Its primary feature is mapping from Java classes 
+to database tables, and mapping from Java data types to SQL data types.
+
+*Persistence:
+Persistence simply means that we would like our application’s data 
+to outlive the applications process. In Java terms, we would like the
+state of our objects to live beyond the scope of the JVM,
+so that the same state is available later.
+
+*Relational Databases: ?
+Hibernate ORM applies to relational databases (RDBMS). 
+In the world of Object-Oriented applications, there is often a discussion 
+about using an object database (ODBMS) as opposed 
+to a relational databases.
+
+*The Object-Relational Impedance Mismatch:
+ object models and relational models do not work very well together. 
+ relational databases represent data in a tabular format, 
+whereas object-oriented languages represent it as an interconnected graph 
+of objects.
+
+ The Hibernate configuration file
+hibernate.cfg.xml file defines the Hibernate configuration information.
+The connection.driver_class, connection.url, connection.username 
+and connection.password <property/> elements define JDBC connection 
+information. connection.pool_size is used to configure the number 
+of connections in Hibernate’s built-in connection pool.
+The dialect property specifies the particular SQL variant with which 
+Hibernate will converse.
+In most cases, Hibernate is able to properly determine which dialect to use.
+ This is particularly useful if your application targets multiple databases.
+The hbm2ddl.auto property enables automatic generation of database schemas 
+directly into the database.
+
+Finally, add the mapping file(s) for persistent classes to the configuration.
+The resource attribute of the <mapping/> element causes Hibernate to attempt
+to locate that mapping as a classpath resource using a
+ java.lang.ClassLoader lookup.
+
+
+What is a POM.xml?
+A Project Object Model or POM is the fundamental unit of work in Maven. 
+It is an XML file that contains information about the project and 
+configuration details used by Maven to build the project. 
+It contains default values for most projects. 
+When executing a task or goal, Maven looks for the POM in the current 
+directory. It reads the POM, gets the needed configuration information, 
+then executes the goal.
+Some of the configuration that can be specified in the POM are 
+the project dependencies, the plugins or goals that can be executed, 
+the build profiles, and so on. 
+Other information such as the project version, description, developers, 
+mailing lists and such can also be specified.
+ _____________________________________________________________________
+
+****************** JPA ******************
+(Java Persistence API)
+_____________________________________________________________________
+JPA provides an object/relational mapping facility for managing
+relational data in Java applications:
+*The query language
+*The Java Persistence Criteria API
+*Object/relational mapping metadata
+_____________________________________________________________________
+Annotations:
+
+@Id - used for Defining a primary key
+@javax.persistence.Id marks the property which defines the entity’s identifier.
+
+
+---------------------------------------
+Examples:
+---------------------------------------
+@Entity - 
+The @javax.persistence.Entity annotation is used to mark a class as an entity.
+Additionally the @javax.persistence.Table annotation explicitly specifies the table name. 
+Without this specification, the default table name would be EVENT.
+
+used for Defining a class as a table in a database.
+An entity has one attribute:
+Name - The name of the entity in the queries. This name must not be a 
+reserved word in the language of the queries.
+---------------------------------------
+Examples:
+---------------------------------------
+@Table - 
+Define the table, schema, and catalog name in the database for the class
+the @Table has the following features:
+name - The name of the table in the database.
+schema - name of the schema.
+catalog - The name of the catalog (in databases that support the catalog).
+@Table(name = "AUTHORS", schema = "STORE")
+---------------------------------------
+Examples:
+---------------------------------------
+@GeneratedValue -
+@javax.persistence.GeneratedValue
+Automatic creation of values for the primary key:
+generator - The name of the primary key used to generate the key.
+strategy - the method of production of the key.
+---------------------------------------
+Examples:
+---------------------------------------
+@Column -
+The name of the column in the table. Column has the following attributes:
+name - The name of the column in the table.
+columnDefinition - Defines the column, for example CLOB NOT NULL.
+nullable - Can be NULL.
+length - The length of the column in the case of a String.
+---------------------------------------
+Examples:
+---------------------------------------
+ @ManyToOne and @OneToMany -
+  Mapping of M: 1 and 1M. Here, too, the mapping should be two-way.
+---------------------------------------
+Examples:
+---------------------------------------
+ ManyToMany @ - M: N mapping. Here, too, the mapping should be two-way. 
+Defines a many-valued association with many-to-many multiplicity.
+Every many-to-many association has two sides, the owning side and the non-owning, or inverse, side. 
+The join table is specified on the owning side. If the association is bidirectional, either side may 
+be designated as the owning side. If the relationship is bidirectional, the non-owning side must use 
+the mappedBy element of the ManyToMany annotation to specify the relationship field or property 
+of the owning side.The join table for the relationship, if not defaulted, is specified on 
+the owning side.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+---------------------------------------
+Examples:
+---------------------------------------
+ @JoinColumn -
+  
+  
+---------------------------------------
+Examples:
+---------------------------------------
+ 
+ 
+ 
+
